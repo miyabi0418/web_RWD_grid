@@ -1,4 +1,6 @@
 $text-color-black: #333;
+$text-color-green: #038C8C;
+$text-color-white: #f8f9fa;
 
 * {
     margin: 0;
@@ -133,6 +135,11 @@ nav {
 
 #icon{
     background-color: #f8f9fa;
+    h1{
+        font-size: 50px;
+        text-align: center;
+        padding: 30px 0;
+    }
     div{
         max-width: 1200px;
         margin: 0 auto;
@@ -143,14 +150,179 @@ nav {
         div{
             display: block;
             text-align: center;
-        }
-        img{
+
+            img{
             display: block;
             width: 65px;
-        }
-        span{
+            }
+            span{
             display: block;
             padding: 10px 0;
+            }
+            &:hover img{
+                filter: invert(31%) sepia(49%) saturate(2944%) hue-rotate(158deg) brightness(95%) contrast(98%);
+            }
+            &:hover span{
+                color: $text-color-green;
+            }
+        }
+    }
+}
+
+//頁尾
+footer{
+    background-color: #0C3B40;
+    text-align: center;
+    padding: 30px 0;
+    img{
+        width: 180px;
+    }
+    p{
+        color:$text-color-white;
+    }
+}
+
+// 菜單
+#menu {
+    display: none;
+    position: fixed;
+    right: 0;
+    top: 0;
+    padding: 10px;
+    cursor: pointer;
+    img {
+        filter: invert(1);
+        width: 40px;
+    }
+
+    // 啟動：點選元素時
+    &:active #menu-box{
+        right: 0;
+    }
+    &:hover #menu-box{
+        right: 0;
+    }
+
+    #menu-box {
+        position: absolute;
+        right: -600px;
+        top: 0;
+        width: 600px;
+        height: 100vh;
+        background-color: #fff;
+        transition: 0.5s;
+
+        ul {
+            list-style: none;
+            text-align: center;
+            li {
+                padding: 30px;
+                a {
+                    color: $text-color-black;
+                    text-decoration: none;
+                    font-size: 25px;
+                    color: $text-color-green;                   
+                }
+            }
+        }
+    }
+}
+
+// 手機
+@media screen and (max-width: 768px) {
+    
+    nav {
+        grid-template-columns: auto;
+
+        ul {
+            display: none;
+        }
+    }
+
+    #menu {
+        display: block;
+    }
+    #content-1 ,#content-2 ,#content-3{
+
+        // "" 一列 "" "" 兩列
+        grid-template-areas: "pic" "text-area" ;
+        grid-template-columns: 1fr;
+    }
+    .pic{
+        text-align: center;
+    }
+    .text-area{
+        padding: 0 20px;
+    }
+    #icon{
+        div{
+        grid-template-columns: repeat(2, 1fr);
+        }
+    }
+}
+
+// 平板
+@media screen and (min-width: 769px) {
+
+    nav {
+        grid-template-columns: auto;
+
+        ul {
+            display: none;
+        }
+    }
+
+    #menu {
+        display: block;
+    }
+    #content-1 ,#content-2 ,#content-3{
+
+        // "" 一列 "" "" 兩列
+        grid-template-areas: "pic" "text-area" ;
+        grid-template-columns: 1fr;
+    }
+    .pic{
+        text-align: center;
+    }
+    .text-area{
+        padding: 0 20px;
+    }
+    #icon{
+        div{
+        grid-template-columns: repeat(4, 1fr);
+        }
+    }
+}
+
+// 電腦
+@media screen and (min-width: 1025px) {
+    
+    nav {
+        grid-template-columns: auto 100px auto;
+
+        ul {
+            display: block;
+        }
+    }
+
+    #menu {
+        display: none;
+    }
+    #content-1, #content-3 {
+        grid-template-areas: 'pic text-area';
+    }
+    #content-2 {
+        grid-template-areas: 'text-area pic';
+    }
+    .pic{
+        text-align: center;
+    }
+    .text-area{
+        padding: 0 20px;
+    }
+    #icon{
+        div{
+        grid-template-columns: repeat(6, 1fr);
         }
     }
 }
